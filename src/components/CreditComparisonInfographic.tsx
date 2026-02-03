@@ -39,7 +39,7 @@ export default function CreditComparisonInfographic() {
                 <div className="bg-red-500 rounded-full p-2">
                   <X className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-red-900">What You've Been Doing</h3>
+                <h3 className="text-2xl font-bold text-red-900">What Doesn't Work</h3>
               </div>
 
               <div className="space-y-4">
@@ -87,7 +87,7 @@ export default function CreditComparisonInfographic() {
 
             {/* Result indicator */}
             <div className="bg-blue-100 rounded-xl p-4 text-center border-2 border-[#057AFF]/50 shadow-md">
-              <p className="text-[#057AFF] font-semibold text-lg">Result: 520 → 700+ credit score transformation</p>
+              <p className="text-[#057AFF] font-semibold text-lg">Result: Access to wealth-building tools and opportunities</p>
             </div>
           </div>
 

@@ -4,7 +4,9 @@
       "Bash(npm run dev:*)",
       "Bash(sudo chown:*)",
       "Bash(pkill:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(git rm:*)",
+      "Bash(git rebase:*)"
     ]
   }
 }
