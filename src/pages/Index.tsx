@@ -96,7 +96,7 @@ const Index = () => {
         <PricingCard
           title="Fresh Start Credit Package"
           description="This program is for people with negative items, collections, or charge-offs on their credit report who want them deleted permanently."
-          price={500}
+          price={450}
           originalPrice={1000}
           features={[
             {
