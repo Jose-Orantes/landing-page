@@ -1,42 +1,15 @@
 import VideoPlayer from "./VideoPlayer";
-import { BGPattern } from "@/components/ui/bg-pattern";
 import StoriesMarquee from "./StoriesMarquee";
 import TypeformEmbed from "./TypeformEmbed";
 const HeroSection = () => {
-  const testimonialImages = [{
-    src: "/stories/story-5.jpg",
-    alt: "American Express card approved with $33,000 credit limit"
-  }, {
-    src: "/stories/story-6.jpg",
-    alt: "88 point increase in 1 month - $20,000 card approved"
-  }, {
-    src: "/stories/story-2.jpg",
-    alt: "728 credit score with 89 points gained in 30 days"
-  }, {
-    src: "/stories/story-9.jpg",
-    alt: "Credit limit increased from $15,000 to $33,000 with American Express"
-  }, {
-    src: "/stories/story-10.jpg",
-    alt: "789 FICO score with Equifax at 785 showing excellent credit"
-  }, {
-    src: "/stories/story-7.jpg",
-    alt: "$584 in credit card rewards - Good credit pays you back"
-  }, {
-    src: "/stories/story-3.jpg",
-    alt: "798 credit score - 36 point jump in just 12 days"
-  }, {
-    src: "/stories/story-1.jpg",
-    alt: "2 collections removed - Credit score increased from 660 to 753"
-  }, {
-    src: "/stories/story-8.jpg",
-    alt: "794 credit score equals effortless approvals and $20,000 credit limit"
-  }, {
-    src: "/stories/story-4.jpg",
-    alt: "Credit scores 785 TransUnion and 801 Equifax - Excellent rating"
-  }];
+  // Placeholder images for future testimonials - add your images to /stories/ folder
+  // const testimonialImages = [
+  //   { src: "/stories/story-1.jpg", alt: "Success story 1" },
+  //   { src: "/stories/story-2.jpg", alt: "Success story 2" },
+  //   // Add more images here...
+  // ];
+
   return <section className="min-h-screen flex flex-col items-center justify-start relative overflow-hidden pt-20 sm:pt-24 md:pt-28">
-      <BGPattern variant="dots" mask="fade-edges" size={40} fill="rgba(0, 0, 0, 0.25)" className="absolute inset-0 z-0" />
-      
       {/* Full-width Banner Strip */}
       <div className="w-full max-w-4xl mx-auto flex justify-center mb-4 sm:mb-6 mt-0 relative z-10 animate-fade-in px-4 sm:px-6" style={{
       animationDelay: '0.1s',
@@ -88,7 +61,7 @@ const HeroSection = () => {
 
       {/* Stories Marquee */}
       <div className="w-full">
-        <StoriesMarquee images={testimonialImages} />
+        <StoriesMarquee />
       </div>
     </section>;
 };

@@ -59,7 +59,7 @@ const Index = () => {
   return (
     <div className="min-h-screen animate-fade-in">
       <StickyHeader />
-      <div className="pt-16 sm:pt-28 md:pt-32 lg:pt-40">
+      <main id="main-content" className="pt-16 sm:pt-28 md:pt-32 lg:pt-40">
         <HeroSection />
       <ScrollReveal>
         <CreditComparisonInfographic />
@@ -137,7 +137,7 @@ const Index = () => {
         onSubscribe={handleNewsletterSubscribe}
       />
       </ScrollReveal>
-      </div>
+      </main>
     </div>
   );
 };

@@ -110,7 +110,7 @@ export default {
         },
         "stories-scroll": {
           "0%": { transform: "translate3d(0, 0, 0)" },
-          "100%": { transform: "translate3d(-33.333%, 0, 0)" },
+          "100%": { transform: "translate3d(-50%, 0, 0)" },
         },
         "spin-around": {
           "0%": {
@@ -139,7 +139,7 @@ export default {
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         marquee: 'marquee var(--duration) linear infinite',
-        "stories-scroll": "stories-scroll 20s linear infinite",
+        "stories-scroll": "stories-scroll 40s linear infinite",
         "shimmer-slide": "shimmer-slide var(--speed) ease-in-out infinite alternate",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
       },

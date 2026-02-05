@@ -25,8 +25,8 @@ export default function StoriesMarquee({
   images = defaultPlaceholders,
   className 
 }: StoriesMarqueeProps) {
-  // Triple images for seamless loop - ensures all images are visible before reset
-  const tripledImages = [...images, ...images, ...images];
+  // Double images for seamless loop - reduced from 3x for better performance
+  const doubledImages = [...images, ...images];
 
   return (
     <section 
@@ -39,13 +39,14 @@ export default function StoriesMarquee({
       {/* Upload your Instagram Story screenshots here. Drag to reorder. No captions will be shown. The strip scrolls automatically and loops. */}
       
       <div className="relative pb-8 pt-8 md:pt-12">
-        <div 
-          className="flex gap-6 animate-stories-scroll w-max" 
-          style={{ 
-            willChange: 'transform'
+        <div
+          className="flex gap-6 w-max animate-stories-scroll"
+          style={{
+            transform: 'translate3d(0, 0, 0)',
+            backfaceVisibility: 'hidden'
           }}
         >
-          {tripledImages.map((image, index) => (
+          {doubledImages.map((image, index) => (
             <div
               key={index}
               className="flex-shrink-0 h-[22rem] sm:h-[28rem] lg:h-[34rem] w-auto aspect-[9/16] overflow-hidden"

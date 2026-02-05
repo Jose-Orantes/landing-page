@@ -65,11 +65,9 @@ export const Timeline = ({
           return <div key={index} className="flex justify-start pt-16 md:pt-32 md:gap-10">
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-20 md:top-40 self-start max-w-xs md:w-full transform-gpu">
               <div className="h-10 absolute left-3 w-10 rounded-full bg-white border border-[#057bff] flex items-center justify-center">
-                <motion.div 
-                  style={{ opacity: ballOpacity, scale: ballScale, transformOrigin: "center", willChange: "transform, opacity" }}
-                  className="h-4 w-4 rounded-full bg-gradient-to-br from-[#057bff] to-[#0456b8] shadow-lg shadow-[#057bff]/50 will-change-transform transform-gpu [backface-visibility:hidden]"
-                  layoutScroll={false}
-                  initial={false}
+                <motion.div
+                  style={{ opacity: ballOpacity, scale: ballScale }}
+                  className="h-4 w-4 rounded-full bg-gradient-to-br from-[#057bff] to-[#0456b8] shadow-lg shadow-[#057bff]/50 transform-gpu"
                 />
               </div>
               <h3 className="hidden md:block headline text-2xl sm:text-3xl lg:text-4xl md:pl-20 font-bold text-foreground">
