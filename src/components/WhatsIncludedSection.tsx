@@ -151,7 +151,7 @@ const WhatsIncludedSection = () => {
                   Exclusive Bonus Included
                 </h3>
                 <p className="text-gray-400 max-w-md">
-                  Worth $199 in additional value, yours free with your Genesis package
+                  Worth $199 in additional value
                 </p>
               </div>
               
