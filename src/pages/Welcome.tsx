@@ -75,12 +75,12 @@ const Welcome = () => {
         ) : payment ? (
           <div className="flex justify-center mb-12 animate-fade-in" style={{ animationDelay: '0.7s', animationDuration: '0.8s', animationFillMode: 'both' }}>
             <AnimatedTicket
-              ticketId={payment.id.replace("pay_", "")}
+              ticketId={payment.id.replace(/^cs_(test|live)_/, "").slice(0, 14)}
               amount={payment.amount}
               date={new Date(payment.paidAt)}
               cardHolder={payment.cardHolder ?? "Valued Customer"}
               last4Digits={payment.cardLast4 ?? "****"}
-              barcodeValue={payment.id.replace("pay_", "")}
+              barcodeValue={payment.id.replace(/^cs_(test|live)_/, "").slice(0, 14)}
               cardBrand={payment.cardBrand ?? undefined}
             />
           </div>
