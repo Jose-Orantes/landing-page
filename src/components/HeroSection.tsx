@@ -31,7 +31,7 @@ const HeroSection = () => {
         animationDuration: '0.8s',
         animationFillMode: 'both'
       }}>
-          Get Your <span className="highlight">Free</span> Credit Analysis & <span className="highlight">Remove Negatives</span> Holding You Back To Start Getting Approved In As Little As 30 Days
+          Get Your <span className="highlight">Free</span> Credit Analysis & <span className="highlight">Remove Negatives</span> Holding You Back To Start Getting Approved In As Little As 45 Days
         </h1>
 
         {/* Subheadline */}

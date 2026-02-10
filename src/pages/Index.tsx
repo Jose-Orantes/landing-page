@@ -117,7 +117,7 @@ const Index = () => {
               ],
             },
           ]}
-          buttonText="Sign Up"
+          buttonText="Fix My Credit"
           onButtonClick={handleCheckout}
         />
       </section>
