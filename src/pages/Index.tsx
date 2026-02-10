@@ -45,7 +45,7 @@ const Index = () => {
   ];
 
   const handleCheckout = () => {
-    window.location.href = "https://whop.com/checkout/plan_Bm5fCIrPugVfO?d2c=true";
+    window.location.href = "https://buy.stripe.com/8x2cN52Wrfef1oEdkFd7q00";
   };
 
   const handleNewsletterSubscribe = async (email: string): Promise<boolean> => {

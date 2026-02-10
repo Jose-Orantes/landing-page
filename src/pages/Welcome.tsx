@@ -22,18 +22,13 @@ const Welcome = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const status = searchParams.get("status");
-    const paymentId = searchParams.get("payment_id");
-
-    // Show ticket if redirected from Whop (?status=success) or if a specific payment_id is provided
-    if (!status && !paymentId) {
+    const sessionId = searchParams.get("session_id");
+    if (!sessionId) {
       setLoading(false);
       return;
     }
 
-    const url = paymentId ? `/api/payment?id=${paymentId}` : "/api/payment";
-
-    fetch(url)
+    fetch(`/api/payment?session_id=${sessionId}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();

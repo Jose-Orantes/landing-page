@@ -23,56 +23,44 @@ export default async function handler(req: Request, res: Response) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const apiKey = process.env.WHOP_API_KEY;
-  const companyId = process.env.WHOP_COMPANY_ID;
-  if (!apiKey || !companyId) {
-    return res.status(500).json({ error: "WHOP_API_KEY or WHOP_COMPANY_ID not configured" });
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) {
+    return res.status(500).json({ error: "STRIPE_SECRET_KEY not configured" });
   }
 
-  const paymentId = req.query.id as string | undefined;
+  const sessionId = req.query.session_id as string | undefined;
+  if (!sessionId) {
+    return res.status(400).json({ error: "session_id is required" });
+  }
 
   try {
-    let paymentData;
+    const response = await fetch(
+      `https://api.stripe.com/v1/checkout/sessions/${sessionId}?expand[]=payment_intent.payment_method`,
+      {
+        headers: { Authorization: `Bearer ${secretKey}` },
+      }
+    );
 
-    if (paymentId) {
-      const response = await fetch(
-        `https://api.whop.com/api/v1/payments/${paymentId}`,
-        {
-          headers: { Authorization: `Bearer ${apiKey}` },
-        }
-      );
-      if (!response.ok) {
-        return res.status(response.status).json({ error: "Payment not found" });
-      }
-      paymentData = await response.json();
-    } else {
-      const response = await fetch(
-        `https://api.whop.com/api/v1/payments?company_id=${companyId}&statuses=paid&order=created_at&direction=desc&first=1`,
-        {
-          headers: { Authorization: `Bearer ${apiKey}` },
-        }
-      );
-      if (!response.ok) {
-        return res.status(response.status).json({ error: "Failed to fetch payments" });
-      }
-      const data = await response.json();
-      const payments = data.data || data.results || [];
-      if (payments.length === 0) {
-        return res.status(404).json({ error: "No payments found" });
-      }
-      paymentData = payments[0];
+    if (!response.ok) {
+      return res.status(response.status).json({ error: "Session not found" });
     }
 
+    const session = await response.json();
+    const paymentIntent = session.payment_intent;
+    const card = paymentIntent?.payment_method?.card;
+
     return res.status(200).json({
-      id: paymentData.id,
-      amount: paymentData.total ?? paymentData.usd_total ?? 0,
-      currency: paymentData.currency ?? "usd",
-      status: paymentData.status,
-      cardBrand: paymentData.card_brand ?? paymentData.payment_method?.card?.brand ?? null,
-      cardLast4: paymentData.card_last4 ?? paymentData.payment_method?.card?.last4 ?? null,
-      cardHolder: paymentData.user?.name ?? paymentData.billing_address?.name ?? null,
-      email: paymentData.user?.email ?? null,
-      paidAt: paymentData.paid_at ?? paymentData.created_at,
+      id: session.id,
+      amount: (session.amount_total ?? 0) / 100,
+      currency: session.currency ?? "usd",
+      status: session.payment_status,
+      cardBrand: card?.brand ?? null,
+      cardLast4: card?.last4 ?? null,
+      cardHolder: session.customer_details?.name ?? null,
+      email: session.customer_details?.email ?? null,
+      paidAt: paymentIntent?.created
+        ? new Date(paymentIntent.created * 1000).toISOString()
+        : new Date().toISOString(),
     });
   } catch {
     return res.status(500).json({ error: "Internal server error" });
